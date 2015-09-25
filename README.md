@@ -5,7 +5,7 @@ Each docker image runs on a separate Amazon Web Services instance with a dedicat
 Your docker image logs will appear among your Heroku app’s logs.
 
 > callout
-> The add-on is currently in private testing and available to the chosen users only.
+> The add-on is currently in private testing and available to the alpha testers only.
 > Please email us at dockhero@castle.co to get access.
 
 ## Provisioning the add-on
@@ -53,7 +53,7 @@ Starting motdhttp_web_1...
 Attaching to motdhttp_web_1
 ```
 
-Now we can test if the stack is up (here we assume Dockes is installed via `docker-machine`):
+Now you can test if the stack is up (assuming Dockes is installed via `docker-machine`):
 ```term
 $ curl http://$(docker-machine ip default)/
 From listening comes wisdom and from speaking repentance.
