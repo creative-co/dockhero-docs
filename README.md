@@ -4,12 +4,15 @@ Run any image from Docker Hub in our infrastructure in a minute, and attach it t
 Each docker image runs on a separate Amazon Web Services instance with a dedicated IP.
 Your docker image logs will appear among your Heroku app’s logs.
 
+> callout
+> The add-on is currently in private testing and available to the chosen users only.
+> Please email us at dockhero@castle.co to get access.
 
 ## Provisioning the add-on
 
 DockHero can be attached to a Heroku application via the CLI:
 
-> callVout
+> callout
 > A list of all plans available can be found [here](http://addons.heroku.com/dockhero).
 
 ```term
@@ -42,6 +45,7 @@ web:
     - "80:8000"
 ```
 
+
 then run the stack locally.
 ```term
 $ docker-compose up
@@ -57,10 +61,6 @@ From listening comes wisdom and from speaking repentance.
 
 ## Deploying your first stack via Dashboard
 
-> callout
-> For more information on the features available within the DockHero dashboard please see the docs at [mysite.com/docs](mysite.com/docs).
-
-
 The dashboard can be accessed via the CLI:
 
 ```term
@@ -73,14 +73,17 @@ or by visiting the [Heroku Dashboard](https://dashboard.heroku.com/apps) and sel
 To deploy your example Docker stack, copy-paste the content of `docker-compose.yml` into the text area and click *Redeploy* button.
 Your stack will be up in a minute
 
+> callout
+> You can find more example stacks at https://github.com/cloudcastle/dockhero/tree/master/examples
 
 ## Using with Ruby
 
 
 In a Ruby applications, you can fetch the host name of your Docker service from DOCKHERO environment variable.
-In the example above, you could read the MOTD message using the following script:
+With the stack above spinned up, you could read the MOTD message using the following Ruby code:
 
 ```ruby
+#!/usr/bin/env ruby
 response = open("http://#{DOCKHERO_HOST}/") { |f| f.read }
 puts "DOCKHERO says:\n  #{response}"
 ```
@@ -128,7 +131,7 @@ Before removing DockHero a data export should be performed using the tools speci
 All DockHero support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels).
 Any non-support related issues or product feedback is welcome at dockhero@castle.co
 If you prefer GitHub way, feel free to file issues at https://github.com/cloudcastle/dockhero/issues
-You can improve the current docs by sending a pull request to https://github.com/cloudcastle/dockhero/
+You can improve the current docs or post your stackfile examples by sending a pull request to https://github.com/cloudcastle/dockhero/
 
 
 
