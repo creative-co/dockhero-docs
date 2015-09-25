@@ -6,7 +6,7 @@ Your docker image logs will appear among your Heroku app’s logs.
 
 > callout
 > The add-on is currently in private testing and available to the alpha testers only.
-> Please email us at dockhero@castle.co to get access.
+> Please email us at [dockhero@castle.co](mailto:dockhero@castle.co) to get access.
 
 ## Provisioning the add-on
 
@@ -30,23 +30,23 @@ $ heroku config:get DOCKHERO_HOST
 
 ## Preparing a stackfile
 We'll be building a pluggable resource which returns MOTD via HTTP.
-Here's a Docker image which does that: https://hub.docker.com/r/dockhero/motd-http/
+Here's a [Docker image](https://hub.docker.com/r/dockhero/motd-http/) which does that.
 
 > callout
-> As a prerequisite, you'll need Docker set up locally.
-> Please find installation instructions for your platform here: https://docs.docker.com/installation/
+> You should already have Docker set up locally.
+> Please follow the [installation instructions for your platform](https://docs.docker.com/installation/)
 
 Create `docker-compose.yml` file with the following content:
 
-```yaml
+```yml
 web:
   image: dockhero/motd-http
   ports:
     - "80:8000"
 ```
 
+Then run the stack locally
 
-then run the stack locally.
 ```term
 $ docker-compose up
 Starting motdhttp_web_1...
@@ -54,6 +54,7 @@ Attaching to motdhttp_web_1
 ```
 
 Now you can test if the stack is up (assuming Dockes is installed via `docker-machine`):
+
 ```term
 $ curl http://$(docker-machine ip default)/
 From listening comes wisdom and from speaking repentance.
@@ -70,11 +71,11 @@ Opening dockhero for sharp-mountain-4005
 
 or by visiting the [Heroku Dashboard](https://dashboard.heroku.com/apps) and selecting the application in question. Select DockHero from the Add-ons menu.
 
-To deploy your example Docker stack, copy-paste the content of `docker-compose.yml` into the text area and click *Redeploy* button.
+To deploy your example Docker stack, copy-paste the content of `docker-compose.yml` created above into the text area and click *Redeploy* button.
 Your stack will be up in a minute
 
 > callout
-> You can find more example stacks at https://github.com/cloudcastle/dockhero/tree/master/examples
+> You can find more example stacks [here](https://github.com/cloudcastle/dockhero/tree/master/examples)
 
 ## Using with Ruby
 
@@ -123,15 +124,11 @@ $ heroku addons:destroy dockhero
 -----> Removing dockhero from sharp-mountain-4005... done, v20 (free)
 ```
 
-Removing the addon wil permanently destroy any data stored within your service.
-Before removing DockHero a data export should be performed using the tools specific to your service.
 
 ## Support
 
-All DockHero support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels).
-Any non-support related issues or product feedback is welcome at dockhero@castle.co
-If you prefer GitHub way, feel free to file issues at https://github.com/cloudcastle/dockhero/issues
-You can improve the current docs or post your stackfile examples by sending a pull request to https://github.com/cloudcastle/dockhero/
+All DockHero support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels). For other questions or suggestions, please email us at [dockhero@castle.co](mailto: dockhero@castle.co).
 
+If you prefer GitHub way, please feel free to file an issue [here](https://github.com/cloudcastle/dockhero/issues)
 
-
+You can improve the current docs or post your own stackfile examples by forking [our repo](https://github.com/cloudcastle/dockhero/) and sending a pull request.
