@@ -1,5 +1,7 @@
 [DockHero](http://addons.heroku.com/dockhero) hosts your docker stack in the cloud.
 
+Please request private beta access at [dockhero.io](http://dockhero.io/)
+
 Run any image from Docker Hub in our infrastructure in a minute, and attach it to your Heroku app like any other add-on.
 Each docker image runs on a separate Amazon Web Services instance with a dedicated IP.
 Your docker image logs will appear among your Heroku app’s logs.
