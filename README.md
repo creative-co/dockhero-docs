@@ -135,6 +135,13 @@ DockHero activity can be identified within the Heroku log-stream by `dockhero` p
 $ heroku logs -t | grep 'dockhero'
 ```
 
+You can also attach to your stack's logs stream directly using docker-compose:
+
+```
+  heroku dh:compose logs --follow
+```
+
+
 ## Migrating between plans
 
 Currently only the Test plan is supported
