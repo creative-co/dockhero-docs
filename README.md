@@ -22,7 +22,7 @@ $ heroku addons:create dockhero
 -----> Adding dockhero to sharp-mountain-4005... done, v18 (free)
 ```
 
-Once DockHero has been added a `DOCKHERO_HOST` setting will be available in the app configuration and will contain the hostname of the newly provisioned Docker Swarm cluster (consisting of a single machine). This can be confirmed using the `heroku config:get` command.
+Once DockHero has been added a `DOCKHERO_HOST` setting will be available in the app configuration and will contain the hostname of the newly provisioned Docker Swarm cluster (currently a single AWS EC2 instance). This can be confirmed using the `heroku config:get` command.
 
 ```term
 $ heroku config:get DOCKHERO_HOST
@@ -31,7 +31,7 @@ orange-apple-1984.dockhero.io
 
 ## Installing CLI plugin
 
-In order to access the newly provisioned cluster, install Dockhero CLI plugin:
+In order to access the newly provisioned Swarm cluster, install Dockhero CLI plugin:
 
 ```term
   heroku plugins:install dockhero
@@ -44,7 +44,7 @@ Now you can run docker / docker-compose against that cluster using the shortcuts
   heroku dh:compose
 ```
 
-Find other usage examples of the plugin in the [docs](https://github.com/cloudcastle/dockhero-cli)
+Find other available commands in the [docs](https://github.com/cloudcastle/dockhero-cli)
 
 
 ## Preparing a stackfile
@@ -57,9 +57,9 @@ Writing example stack into dockhero-compose.yml...
 ```
 
 This will create  **dockhero-compose.yml** in the root of your repo. 
-It's recommended that you also put this file under version control.
+It's recommended that you put this file under version control.
 See [docker-compose.yml reference](https://docs.docker.com/v1.8/compose/yml/) for the file syntax.
-There are also some [stackfile examples](https://github.com/cloudcastle/dockhero-docs/tree/master/examples) for your reference.
+There are also [stackfile examples](https://github.com/cloudcastle/dockhero-docs/tree/master/examples) available for your reference.
 
 In our example below, we'll be building a pluggable resource which returns message of the day via HTTP.
 Here's a [Docker image](https://hub.docker.com/r/dockhero/motd-http/) which does that.
@@ -94,7 +94,7 @@ $ heroku dh:compose scale web=1
 Starting motdhttp_web_1...
 ```
 
-Now you should be able to see message of the day by opening the app in your browser
+Now you should be able to see MOTD by opening the app in your browser
 
 ```term
 $ heroku dh:open
