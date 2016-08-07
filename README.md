@@ -22,6 +22,12 @@ $ heroku addons:create dockhero
 -----> Adding dockhero to sharp-mountain-4005... done, v18 (free)
 ```
 
+The actual provisioning may take up to 5 minutes. You can track the provisioning progress by logging into add-on dashboard:
+
+```term
+$ heroku addons:open dockhero
+```
+
 Once DockHero has been added a `DOCKHERO_HOST` setting will be available in the app configuration and will contain the hostname of the newly provisioned Docker Swarm cluster (currently a single AWS EC2 instance). This can be confirmed using the `heroku config:get` command.
 
 ```term
