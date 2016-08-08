@@ -119,12 +119,15 @@ puts "DOCKHERO says:\n  #{response}"
 
 ## Using SSL Endpoint
 
-Each Dockhero cluster comes with CloudFlare endpoint configured in *full ssl* mode. It has a valid SSL certificate installed, so that you don't need to purchase one yourself.
-SSL is terminated at the CloudFlare edge server, then it is encrypted again, and sent back to Dockhero cluster all encrypted. This is illustrated by this image from CloudFlare docs:
+Each Dockhero cluster comes with two CloudFlare endpoints configured: one in *flexible ssl* mode and another in *full ssl* mode. They have valid SSL certificate installed, so that you don't need to purchase one yourself.
+SSL is terminated at the CloudFlare edge server, then the request is sent to Dockhero cluster via http or https protocol depending on SSL mode.
 
+With Flexible SSL, you don't need to implement SSL in your stack at all.
+![Flexible SSL](https://support.cloudflare.com/hc/en-us/article_attachments/206124658/cfssl_flexible.png)
+
+With Full SSL, your stack still needs to talk SSL, but you can use a self-signed certificate. No worries, the users will see a valid CloudFlare's certificate - find more about CloudFlare SSL in [this article](https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-)
 ![Full SSL](https://support.cloudflare.com/hc/en-us/article_attachments/206167937/cfssl_full.png)
 
-Your stack still needs to talk SSL, but you can use a self-signed certificate, like in [this example](#). No worries, the users will see a valid CloudFlare's certificate - find more about CloudFlare SSL in [this article](https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-)
 
 
 ## Monitoring & Logging
