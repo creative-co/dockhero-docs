@@ -1,5 +1,5 @@
 web:
-  # image: dockhero/hello-dockhero
+  # image: dockhero/dockhero-docs:hello
   build: .
   ports:
     - "80:8080"
