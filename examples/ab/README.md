@@ -1,6 +1,11 @@
 Apache Benchmark for your Heroku app
 ================
 
+```
+$ heroku addons:create dockhero  # installation will take some time
+$ heroku plugins:install dockhero
+```
+
 Once [Dockhero addon](https://elements.heroku.com/addons/dockhero) and [CLI plugin](https://github.com/cloudcastle/dockhero-cli) are installed, you can
 run Apache Benchmark remotely like this:
 
