@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  db:
+    #image: dockhero/dockhero-docs:hello
+    image: rethinkdb
+    ports:
+      - "28015:28015"
+      - "8080:8080"
+    volumes:
+      - rethink-data:/data
+
+volumes:
+  rethink-data:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
