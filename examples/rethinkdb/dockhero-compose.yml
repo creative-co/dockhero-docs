@@ -2,14 +2,18 @@ version: '2'
 
 services:
   db:
-    #image: dockhero/dockhero-docs:hello
     image: rethinkdb
     ports:
       - "28015:28015"
+      # note: this is insecure
       - "8080:8080"
     volumes:
       - rethink-data:/data
 
+  # and this is secure :-)
+  #proxy:
+  #TODO
+  
 volumes:
   rethink-data:
     driver: local
