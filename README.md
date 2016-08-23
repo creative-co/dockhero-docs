@@ -92,11 +92,9 @@ web:
 Then run your stack:
 
 ```term
-$ heroku dh:compose create
+$ heroku dh:compose up -d
+Creating network "dockhero_default" with driver "bridge"
 Creating dockhero_web_1
-
-$ heroku dh:compose start
-Starting web ... done
 
 $ heroku dh:compose ps
 Name                  Command             State             Ports            
@@ -156,7 +154,7 @@ You can also attach to Docker's logs stream directly:
 $ heroku dh:compose logs --follow
 ```
 
-## Troubleshooting
+## Troubleshooting known issues
 
 You can run your stack in foreground mode to simplify debugging.
 Remember to pull updated images and pass `--build` and `--force-recreate` options
@@ -197,6 +195,23 @@ NOTE: this will stop all the services and remove all you current containers
 ```term
 $ heroku dh:compose down
 Removing 48d9cb310fcb_dockhero_web_1 ... done
+```
+
+Another common issue is that dockhero currently supports only bridge networking mode,
+so dockhero-compose.yml needs to include explicit definition for the default network:
+
+```
+networks:
+  default:
+    driver: bridge
+```
+
+Without this section, `dh:compose` may fail with an error like this:
+
+```term
+$ heroku dh:compose up -d
+Creating network "dockhero_default" with the default driver
+ERROR: Error response from daemon: datastore for scope "global" is not initialized
 ```
 
 
