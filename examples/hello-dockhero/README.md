@@ -3,7 +3,7 @@ Example Dockhero Stack
 
 This example starts a NodeJS webserver to serve files from html folder
 
-A very similar stackis generated with `heroku dh:install v2` command. The difference is 
+A very similar stack is generated with `heroku dh:install v2` command. The difference is 
 that `dh:install` references an image from Docker Hub, while the current example builds the image from sources
 
 ```
