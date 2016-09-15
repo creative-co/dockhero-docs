@@ -9,15 +9,7 @@ services:
       - "8080:8080"
     volumes:
       - rethink-data:/data
-
-  # and this is secure :-)
-  #proxy:
-  #TODO
   
 volumes:
   rethink-data:
     driver: local
-
-networks:
-  default:
-    driver: bridge
