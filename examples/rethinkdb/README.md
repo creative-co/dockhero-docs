@@ -30,3 +30,4 @@ heroku dh:open 8080
 
 **IMPORTANT** Your RethinkDB installation is not secure yet. 
 Please see official [Security Guidelines](https://www.rethinkdb.com/docs/security/).
+See [dh:generate](https://github.com/dockhero/generators) for production-ready setup 
