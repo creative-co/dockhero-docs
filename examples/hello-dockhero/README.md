@@ -1,7 +1,12 @@
 Example Dockhero Stack
 =======================
 
-This example starts a NodeJS webserver to serve files from html folder
+Sources for https://hub.docker.com/r/dockhero/hello-dockhero/
+
+This image contains a NodeJS webserver which serves files from html folder
+
+Usage
+-----
 
 ```
 version: '2'
