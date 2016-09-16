@@ -197,23 +197,6 @@ $ heroku dh:compose down
 Removing 48d9cb310fcb_dockhero_web_1 ... done
 ```
 
-Another common issue is that dockhero currently supports only bridge networking mode,
-so dockhero-compose.yml needs to include explicit definition for the default network:
-
-```
-networks:
-  default:
-    driver: bridge
-```
-
-Without this section, `dh:compose` may fail with an error like this:
-
-```term
-$ heroku dh:compose up -d
-Creating network "dockhero_default" with the default driver
-ERROR: Error response from daemon: datastore for scope "global" is not initialized
-```
-
 
 ## Migrating between plans
 
