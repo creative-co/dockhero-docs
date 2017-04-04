@@ -1,14 +1,8 @@
 [DockHero](http://addons.heroku.com/dockhero) hosts your Docker stack in AWS cloud.
 
-Please request private alpha access at [dockhero.io](http://dockhero.io/)
-
 Run any image from Docker Hub in our infrastructure, and attach it to your Heroku app as if it was a Heroku add-on.
 Each docker image runs on a separate Amazon Web Services instance with a dedicated IP.
 Your docker image logs will appear among your Heroku app’s logs.
-
-> callout
-> The add-on is currently in private testing and available to the alpha testers only.
-> Please email us at [dockhero@castle.co](mailto:dockhero@castle.co) to get access.
 
 ## Provisioning the add-on
 
@@ -22,7 +16,7 @@ $ heroku addons:create dockhero
 -----> Adding dockhero to sharp-mountain-4005... done, v18 (free)
 ```
 
-The actual provisioning may take up to 10 minutes. You can track the provisioning progress by logging into add-on dashboard:
+The actual provisioning may take up to 3 minutes. You can track the provisioning progress by logging into add-on dashboard:
 
 ```term
 $ heroku addons:open dockhero
@@ -64,7 +58,7 @@ Find other available commands in the [docs](https://github.com/cloudcastle/dockh
 Use the following command to generate a sample stackfile:
 
 ```
-$ heroku dh:install
+$ heroku dh:generate helloworld
 Writing example stack into dockhero-compose.yml...
 ```
 
@@ -113,7 +107,7 @@ Find other useful commands in [docker-compose cli reference](https://docs.docker
 
 ## Using from Heroku app
 
-In an application running on Heroku, you can fetch the host name of your Docker service from DOCKHERO_HOST environment variable. With the stack above has started, you can read the MOTD message using the following Ruby code:
+In an application running on Heroku, you can fetch the host name of your Docker service from DOCKHERO_HOST environment variable. You can read the MOTD message from our example stack using the following Ruby code:
 
 ```ruby
 #!/usr/bin/env ruby
@@ -161,7 +155,7 @@ $ heroku dh:compose logs --follow
 You can run your stack in foreground mode to simplify debugging.
 Remember to pull updated images and pass `--build` and `--force-recreate` options
 in order for changes to apply:
-a
+
 ```term
 $ heroku dh:compose pull
 Pulling web (dockhero/dockhero-docs:hello)...
@@ -181,23 +175,6 @@ web_1  | Hit CTRL-C to stop the server
 > After stopping your stack (especially with Ctrl-C), remember to wait until
 > it actually goes down and reports this in the console. It usually takes 5-20 seconds.
 
-Sometimes you can't start the stack because the port is already taken:
-
-```term
-$ heroku dh:compose create --build --force-recreate
-Recreating dockhero_web_1
-ERROR: Cannot create container for service web:
-  Unable to find a node that satisfies the following conditions
-   [port 80 (Bridge mode)]
-```
-
-In this case you need to bring your stack down first.
-NOTE: this will stop all the services and remove all you current containers
-
-```term
-$ heroku dh:compose down
-Removing 48d9cb310fcb_dockhero_web_1 ... done
-```
 
 
 ## Migrating between plans
@@ -219,8 +196,6 @@ $ heroku addons:destroy dockhero
 
 ## Support
 
-All DockHero support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels). For other questions or suggestions, please email us at [dockhero@castle.co](mailto: dockhero@castle.co) or use in-app support chat in the bottom-right corner of add-on dashboard.
+All DockHero support and runtime issues should be submitted via one of the [Heroku Support channels](support-channels). For other questions or suggestions, please email us at [dockhero@castle.co](mailto: dockhero@castle.co).
 
-If you prefer GitHub way, please feel free to file an issue [here](https://github.com/cloudcastle/dockhero-docs/issues)
-
-You can improve the current docs or post your own stackfile examples by forking [our repo](https://github.com/cloudcastle/dockhero-docs/) and sending a pull request.
+You can improve the current docs or post your own stackfile examples by forking [our repo](https://github.com/dockhero/generators/) and sending a pull request.
