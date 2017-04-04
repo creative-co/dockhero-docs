@@ -1,8 +1,10 @@
 [DockHero](http://addons.heroku.com/dockhero) hosts your Docker stack in AWS cloud.
 
-Run any image from Docker Hub in our infrastructure, and attach it to your Heroku app as if it was a Heroku add-on.
-Each docker image runs on a separate Amazon Web Services instance with a dedicated IP.
-Your docker image logs will appear among your Heroku app’s logs.
+If you think of Heroku add-ons in general as of boxes with some useful mechanisms inside \(like databases, log analyzers, messengers etc.\), then Dockhero is an empty box where you can put your own microservice described by [docker-compose.yml](https://docs.docker.com/compose/compose-file/).
+
+![](https://static.tildacdn.com/tild3434-6163-4238-a463-623133313634/heroku_dockhero_2_padding.png)
+
+When you add Dockhero add-on to your Heroku application, a new Docker cluster \(currently consisting of a single Swarm master\) is provisioned, and it's address is exposed to your Heroku app via DOCKHERO\_HOST environment variable.
 
 ## Provisioning the add-on
 
@@ -28,7 +30,7 @@ or using CLI plugin:
 $ heroku dh:wait  # requires CLI plugin installed - see below
 ```
 
-Once DockHero has been added a `DOCKHERO_HOST` setting will be available in the app configuration and will contain the hostname of the newly provisioned Docker Swarm cluster (currently a single AWS EC2 instance). This can be confirmed using the `heroku config:get` command.
+Once provisioned, you can find the address of your Docker Swarm among Heroku env variables:.
 
 ```term
 $ heroku config:get DOCKHERO_HOST
