@@ -2,7 +2,7 @@
 
 If you think of Heroku add-ons in general as of boxes with some useful mechanisms inside \(like databases, log analyzers, messengers etc.\), then Dockhero is an empty box where you can put your own microservice described by [docker-compose.yml](https://docs.docker.com/compose/compose-file/).
 
-![](https://static.tildacdn.com/tild3434-6163-4238-a463-623133313634/heroku_dockhero_2_padding.png)
+![](https://s3.amazonaws.com/heroku-devcenter-files/article-images/2812-imported-1491376744-heroku_dockhero_2_padding.png)
 
 When you add Dockhero add-on to your Heroku application, a new Docker cluster \(currently consisting of a single Swarm master\) is provisioned, and it's address is exposed to your Heroku app via DOCKHERO\_HOST environment variable.
 
@@ -78,7 +78,7 @@ Here's a [Docker image](https://hub.docker.com/r/dockhero/motd-http/) which does
 
 First, replace `dockhero-compose.yml` content with the following:
 
-```yml
+```yaml
 web:
   image: dockhero/motd-http
   ports:
@@ -131,11 +131,11 @@ SSL is terminated at the CloudFlare edge server, then the request is sent to Doc
 
 With Flexible SSL, you don't need to implement SSL in your stack at all.
 
-![Flexible SSL](https://support.cloudflare.com/hc/en-us/article_attachments/206124658/cfssl_flexible.png)
+![Flexible SSL](https://s3.amazonaws.com/heroku-devcenter-files/article-images/2812-imported-1491376746-cfssl_flexible.png)
 
 With Full SSL, your stack still needs to talk SSL, but you can use a self-signed certificate. No worries, the users will see a valid CloudFlare's certificate - find more about CloudFlare SSL in [this article](https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-)
 
-![Full SSL](https://support.cloudflare.com/hc/en-us/article_attachments/206167937/cfssl_full.png)
+![Full SSL](https://s3.amazonaws.com/heroku-devcenter-files/article-images/2812-imported-1491376747-cfssl_full.png)
 
 
 ## Logging
